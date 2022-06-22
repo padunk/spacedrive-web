@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { HiBookOpen, HiMap, HiOutlineQuestionMarkCircle } from 'react-icons/hi'
 import { IoMdPeople } from 'react-icons/io'
 import { SiOpencollective } from 'react-icons/si'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 
 import Space from '../utils/space'
 
@@ -189,6 +189,8 @@ const Layout = () => {
       setHeaderClass("bg-gray-900");
     }
   });
+
+  const activeClassName = "underline text-violet-400";
   return (
     <div className="h-full w-full min-h-screen flex flex-col bg-black text-gray-50">
       <motion.header
@@ -213,11 +215,21 @@ const Layout = () => {
             </a>
           </div>
           <div className="lg:flex items-center h-full hidden">
-            <ul className="flex gap-16 text-gray-400 text-lg">
+            <ul className="flex gap-16 text-lg">
               {navigationMenu.slice(2).map((menu) => {
                 return (
-                  <li key={menu.title}>
-                    <Link to={menu.href}>{menu.title}</Link>
+                  <li
+                    key={menu.title}
+                    className="text-gray-400 hover:text-gray-200"
+                  >
+                    <NavLink
+                      to={menu.href}
+                      className={({ isActive }) =>
+                        isActive ? activeClassName : undefined
+                      }
+                    >
+                      {menu.title}
+                    </NavLink>
                   </li>
                 );
               })}
@@ -371,7 +383,10 @@ function FooterList({ data }: { data: FooterListType[] }) {
     <>
       {data.map((d) => {
         return (
-          <li key={d.name} className="mb-4 text-lg">
+          <li
+            key={d.name}
+            className={`mb-4 text-lg ${d.disabled ? "text-gray-500" : ""}`}
+          >
             {d.disabled ? <p>{d.name}</p> : <Link to={d.link}>{d.name}</Link>}
           </li>
         );
