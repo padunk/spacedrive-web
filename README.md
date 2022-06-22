@@ -24,3 +24,10 @@ npm install
 yarn dev
 npm run dev
 ```
+
+- Deployment, this will deploy to `spacedrive.surge.sh`
+
+```bash
+yarn deploy
+npm run deploy
+```
