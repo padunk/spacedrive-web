@@ -21,6 +21,6 @@ npm install
 - Start the dev server
 
 ```bash
-yarn start
-npm run start
+yarn dev
+npm run dev
 ```
