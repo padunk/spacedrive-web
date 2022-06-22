@@ -181,24 +181,28 @@ const orgs = [
 const Layout = () => {
   const { scrollYProgress } = useViewportScroll();
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 100]);
-  const [headerClass, setHeaderClass] = React.useState(
-    "px-14 h-16 fixed inset-0 bg-transparent z-50"
-  );
+  const [headerClass, setHeaderClass] = React.useState("bg-transparent");
   yRange.onChange((v) => {
     if (v < 2) {
-      setHeaderClass("px-14 h-16 fixed inset-0 bg-transparent z-50");
+      setHeaderClass("bg-transparent");
     } else {
-      setHeaderClass("px-14 h-16 fixed inset-0 bg-gray-900 z-50");
+      setHeaderClass("bg-gray-900");
     }
   });
   return (
     <div className="h-full w-full min-h-screen flex flex-col bg-black text-gray-50">
-      <motion.header className={"transition-colors " + headerClass}>
+      <motion.header
+        className={
+          "transition-colors px-28 h-16 fixed inset-0  z-50 " + headerClass
+        }
+      >
         <nav className="flex h-full justify-between">
           <div className="flex items-center h-full">
             <a
               href="https://spacedrive.com"
               className="flex items-center gap-4"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src="https://www.spacedrive.com/assets/logo.55968170.png"
@@ -219,7 +223,24 @@ const Layout = () => {
               })}
             </ul>
           </div>
-          <div className="lg:flex items-center h-full hidden">Discord</div>
+          <div className="lg:flex items-center h-full hidden">
+            <ul className="flex gap-3">
+              {navigationMenu.slice(0, 2).map((menu) => {
+                return (
+                  <li key={menu.title} className="mb-1 text-2xl">
+                    <a
+                      href={menu.href}
+                      key={menu.title}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      {menu.icon}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <div className="flex items-center h-full lg:hidden">
             <HamburgerMenu />
           </div>
@@ -246,7 +267,11 @@ const Layout = () => {
                   key={socmed.name}
                   className="text-gray-300 hover:text-gray-50 transition-colors text-3xl"
                 >
-                  <a href={socmed.href} target="_blank" rel="noreferrer">
+                  <a
+                    href={socmed.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     {socmed.icon}
                   </a>
                 </span>
@@ -308,7 +333,12 @@ function HamburgerMenu() {
           {navigationMenu.slice(0, 2).map((menu) => {
             return (
               <li key={menu.title} className="mb-1">
-                <a href={menu.href} key={menu.title}>
+                <a
+                  href={menu.href}
+                  key={menu.title}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <span className="flex items-center text-sm gap-2">
                     <span className="text-base">{menu.icon}</span>
                     {menu.title}
