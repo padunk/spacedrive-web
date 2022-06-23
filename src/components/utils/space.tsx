@@ -1,6 +1,6 @@
 import React from 'react'
 
-type SpaceProps = {
+type SpaceProps = React.HTMLAttributes<HTMLSpanElement> & {
   width?: string | number;
   height?: string | number;
   display?: string;
