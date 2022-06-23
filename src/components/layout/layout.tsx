@@ -15,45 +15,51 @@ export type FooterListType = {
   disabled: boolean;
 };
 
-const navigationMenu = [
+export type MenuList = {
+  icon: React.ReactNode;
+  name: string;
+  href: string;
+};
+
+const navigationMenu: MenuList[] = [
   {
     icon: <FaDiscord />,
-    title: "Join Discord",
+    name: "Join Discord",
     href: "https://discord.gg/gTaF2Z44f5",
   },
   {
     icon: <FaGithub />,
-    title: "Repository",
+    name: "Repository",
     href: "https://github.com/spacedriveapp/spacedrive",
   },
   {
     icon: <HiMap />,
-    title: "Roadmap",
+    name: "Roadmap",
     href: "/",
   },
   {
     icon: <HiOutlineQuestionMarkCircle />,
-    title: "FAQ",
+    name: "FAQ",
     href: "/faq",
   },
   {
     icon: <IoMdPeople />,
-    title: "Team",
+    name: "Team",
     href: "/team",
   },
   {
     icon: <HiBookOpen />,
-    title: "Blog",
+    name: "Blog",
     href: "/blog",
   },
   {
     icon: <HiOutlineQuestionMarkCircle />,
-    title: "Careers",
+    name: "Careers",
     href: "/careers",
   },
 ];
 
-const socmeds = [
+const socmeds: MenuList[] = [
   {
     icon: <FaTwitter />,
     name: "twitter",
@@ -86,7 +92,7 @@ const socmeds = [
   },
 ];
 
-const abouts = [
+const abouts: FooterListType[] = [
   {
     name: "Team",
     link: "/team",
@@ -114,7 +120,7 @@ const abouts = [
   },
 ];
 
-const downloads = [
+const downloads: FooterListType[] = [
   {
     name: "masOS",
     link: "/macos",
@@ -132,7 +138,7 @@ const downloads = [
   },
 ];
 
-const developers = [
+const developers: FooterListType[] = [
   {
     name: "Documentation",
     link: "https://github.com/spacedriveapp/spacedrive/tree/main/docs",
@@ -155,7 +161,7 @@ const developers = [
   },
 ];
 
-const orgs = [
+const orgs: FooterListType[] = [
   {
     name: "Open Collective",
     link: "https://opencollective.com/spacedrive",
@@ -219,7 +225,7 @@ const Layout = () => {
               {navigationMenu.slice(2).map((menu) => {
                 return (
                   <li
-                    key={menu.title}
+                    key={menu.name}
                     className="text-gray-400 hover:text-gray-200"
                   >
                     <NavLink
@@ -228,7 +234,7 @@ const Layout = () => {
                         isActive ? activeClassName : undefined
                       }
                     >
-                      {menu.title}
+                      {menu.name}
                     </NavLink>
                   </li>
                 );
@@ -239,10 +245,10 @@ const Layout = () => {
             <ul className="flex gap-3">
               {navigationMenu.slice(0, 2).map((menu) => {
                 return (
-                  <li key={menu.title} className="mb-1 text-2xl">
+                  <li key={menu.name} className="mb-1 text-2xl">
                     <a
                       href={menu.href}
-                      key={menu.title}
+                      key={menu.name}
                       target="_blank"
                       rel="noreferrer noopener"
                     >
@@ -344,16 +350,16 @@ function HamburgerMenu() {
         <ul>
           {navigationMenu.slice(0, 2).map((menu) => {
             return (
-              <li key={menu.title} className="mb-1">
+              <li key={menu.name} className="mb-1">
                 <a
                   href={menu.href}
-                  key={menu.title}
+                  key={menu.name}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <span className="flex items-center text-sm gap-2">
                     <span className="text-base">{menu.icon}</span>
-                    {menu.title}
+                    {menu.name}
                   </span>
                 </a>
               </li>
@@ -362,11 +368,11 @@ function HamburgerMenu() {
           <Space className="border-b border-b-gray-600 my-2" />
           {navigationMenu.slice(2).map((menu) => {
             return (
-              <li key={menu.title} className="mb-1">
-                <Link to={menu.href} key={menu.title}>
+              <li key={menu.name} className="mb-1">
+                <Link to={menu.href} key={menu.name}>
                   <span className="flex items-center text-sm gap-2">
                     <span className="text-base">{menu.icon}</span>
-                    {menu.title}
+                    {menu.name}
                   </span>
                 </Link>
               </li>
