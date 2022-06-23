@@ -7,6 +7,8 @@ import {
 } from 'react-icons/hi'
 import { MdAccessTime } from 'react-icons/md'
 
+import Button from '../utils/button'
+
 type Props = {};
 
 const values: CardProps[] = [
@@ -139,9 +141,9 @@ const CareerPage = (props: Props) => {
             </p>
           </section>
           <div className="flex justify-center pt-10">
-            <button className="flex justify-center items-center py-2 px-6 bg-blue-600 rounded-lg text-lg">
+            <Button className="flex justify-center items-center py-2 px-6 bg-blue-600 rounded-lg text-lg">
               See Open Positions
-            </button>
+            </Button>
           </div>
         </article>
 

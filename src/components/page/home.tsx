@@ -4,6 +4,7 @@ import { FaGithub } from 'react-icons/fa'
 import { HiArrowSmRight } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
+import Button from '../utils/button'
 import Space from '../utils/space'
 
 type Props = {};
@@ -74,9 +75,9 @@ const Home = (props: Props) => {
           className="mt-8 flex justify-center items-center flex-col relative z-10"
         >
           <div className="flex justify-center items-center gap-4 text-sm lg:text-base">
-            <button className="bg-blue-500 py-1 px-4 rounded-md">
+            <Button className="bg-blue-500 py-1 px-4 rounded-md">
               Join Wailtlist
-            </button>
+            </Button>
             <button className="bg-gray-900 py-1 px-4 rounded-md flex items-center gap-2">
               <FaGithub className="inline lg:text-lg" /> Star on Github
             </button>
