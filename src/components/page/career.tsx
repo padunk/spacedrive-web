@@ -123,7 +123,7 @@ const jobs = [
 
 const CareerPage = (props: Props) => {
   return (
-    <div className="relative h-full">
+    <div className="relative h-full scroll-smooth">
       <div
         className="absolute w-[800px] h-[800px] right-0 top-0 bg-gradient-radial-career"
         style={{ filter: "blur(200px)" }}
@@ -142,7 +142,7 @@ const CareerPage = (props: Props) => {
           </section>
           <div className="flex justify-center pt-10">
             <Button className="flex justify-center items-center py-2 px-6 bg-blue-600 rounded-lg text-lg">
-              See Open Positions
+              <a href="#open-positions">See Open Positions</a>
             </Button>
           </div>
         </article>
@@ -178,7 +178,10 @@ const CareerPage = (props: Props) => {
             })}
           </section>
 
-          <article className="max-w-[85ch] m-auto border-b-gray-700 border-b pb-40 mt-40">
+          <article
+            className="max-w-[85ch] m-auto border-b-gray-700 border-b pb-40 mt-40"
+            id="open-positions"
+          >
             <section>
               <h2 className="text-center text-4xl font-extrabold">
                 Open Positions
