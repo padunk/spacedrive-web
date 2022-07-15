@@ -5,12 +5,13 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button = (props: Props) => {
+  const baseClassName =
+    "flex justify-center items-center py-2 px-6 bg-blue-600 rounded-md text-lg ";
+  const className = baseClassName + props.className;
+
   return (
     <>
-      <button
-        className="flex justify-center items-center py-2 px-6 bg-blue-600 rounded-md text-lg"
-        {...props}
-      >
+      <button className={className} {...props}>
         {props.children}
       </button>
     </>
